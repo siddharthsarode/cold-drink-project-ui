@@ -41,6 +41,40 @@ const FlavorTitle = () => {
         // markers: true,
       },
     });
+
+    // parallax effect
+    const textParallaxTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".flavor-section",
+        start: "top top",
+        end: "bottom 80%",
+        scrub: 2,
+        // markers: true,
+      },
+      delay: 1,
+    });
+
+    textParallaxTl
+      .to(".first-text-split", {
+        xPercent: -20,
+        ease: "power1.inOut",
+      })
+      .to(
+        ".flavor-text-scroll",
+        {
+          xPercent: -12,
+          ease: "power1.inOut",
+        },
+        "<",
+      )
+      .to(
+        ".second-text-split",
+        {
+          xPercent: -5,
+          ease: "power1.inOut",
+        },
+        "<",
+      );
   }, []);
 
   return (

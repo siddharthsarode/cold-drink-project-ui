@@ -1,12 +1,21 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/all";
+import { useMediaQuery } from "react-responsive";
 
 const Hero = () => {
+  const isMobile = useMediaQuery({
+    query: "(max-width: 768px)",
+  });
+
+  const isTablet = useMediaQuery({
+    query: "(max-width: 1024px)",
+  });
+
   useGSAP(() => {
     const titleSplitText = SplitText.create(".hero-title", { type: "chars" });
 
-    const tl = gsap.timeline({ delay: 0.5 });
+    const tl = gsap.timeline({ delay: 1 });
 
     tl.fromTo(
       ".hero-content",
@@ -15,7 +24,7 @@ const Hero = () => {
         opacity: 1,
         y: 0,
         ease: "power1.inOut",
-      }
+      },
     )
       .to(
         ".hero-text-scroll",
@@ -24,7 +33,7 @@ const Hero = () => {
           clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
           ease: "circ.in",
         },
-        "-=0.5"
+        "-=0.5",
       )
       .from(
         titleSplitText.chars,
@@ -33,7 +42,7 @@ const Hero = () => {
           stagger: 0.02,
           ease: "power2.out",
         },
-        "-=0.5"
+        "-=0.5",
       );
 
     //   create new time line here
@@ -58,11 +67,28 @@ const Hero = () => {
   return (
     <section className="bg-main-bg">
       <div className="hero-container">
-        <img
-          src="/images/static-img.png"
-          alt="hero-image"
-          className="absolute left-1/2 bottom-0 -translate-x-1/2 object-auto scale-100 md:scale-150"
-        />
+        {isTablet ? (
+          <>
+            {isMobile && (
+              <img
+                src="/images/hero-bg.png"
+                className="absolute bottom-40 size-full object-cover"
+              />
+            )}
+            <img
+              src="/images/hero-img.png"
+              className="object-auto absolute bottom-0 left-1/2 -translate-x-1/2"
+            />
+          </>
+        ) : (
+          <video
+            src="/videos/hero-bg.mp4"
+            autoPlay
+            muted
+            playsInline
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        )}
 
         <div className="hero-content">
           <div className="overflow-hidden">

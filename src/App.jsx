@@ -1,33 +1,44 @@
+import { ReactLenis } from "lenis/react";
+
 import Navbar from "./components/Navbar";
 import Hero from "./sections/Hero";
-import { ScrollSmoother, ScrollTrigger } from "gsap/all";
+import { ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
 import Message from "./sections/Message";
 import Flavor from "./sections/Flavor";
-import { useGSAP } from "@gsap/react";
+import Nutrition from "./sections/Nutrition";
+import Benefit from "./sections/Benefit";
+import Testimonials from "./sections/Testimonials";
+import Footer from "./sections/Footer";
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+gsap.registerPlugin(ScrollTrigger);
 
 const App = () => {
-  useGSAP(() => {
-    ScrollSmoother.create({
-      smooth: 2,
-      effects: true,
-    });
-  });
-
   return (
-    <main>
-      <Navbar />
-      <div id="smooth-wrapper">
-        <div id="smooth-content">
-          <Hero />
-          <Message />
-          <Flavor />
-          <div className="h-dvh bg-gray-700"></div>
+    <>
+      <ReactLenis
+        root
+        options={{
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // easing function
+          smoothWheel: true,
+          smoothTouch: false,
+        }}
+      />
+      <main>
+        <Navbar />
+        <Hero />
+        <Message />
+        <Flavor />
+        <Nutrition />
+        <div>
+          <Benefit />
+          <Testimonials />
         </div>
-      </div>
-    </main>
+        <Footer />
+        <div className="h-dvh bg-gray-700"></div>
+      </main>
+    </>
   );
 };
 
