@@ -36,7 +36,6 @@ const App = () => {
           <Testimonials />
         </div>
         <Footer />
-        <div className="h-dvh bg-gray-700"></div>
       </main>
     </>
   );

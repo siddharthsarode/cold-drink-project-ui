@@ -190,7 +190,7 @@ body::-webkit-scrollbar {
   }
 
   .benefit-section {
-    @apply relative min-h-dvh overflow-hidden bg-[#222123];
+    @apply relative min-h-screen overflow-hidden bg-[#222123];
 
     p {
       @apply text-milk font-paragraph text-center text-lg;
@@ -213,7 +213,7 @@ body::-webkit-scrollbar {
     }
 
     .vd-pin-section {
-      @apply mt-20 h-dvh overflow-hidden md:mt-0 md:h-[110vh] md:!-translate-y-[15%];
+      @apply mt-20 h-screen overflow-hidden md:mt-0 md:h-[110vh] md:!-translate-y-[15%];
 
       video {
         @apply absolute inset-0 size-full object-cover;
@@ -241,7 +241,7 @@ body::-webkit-scrollbar {
     }
 
     h1 {
-      @apply ml-[2vw] text-[20.5vw] leading-[105%] font-bold tracking-[-.4vw] uppercase;
+      @apply ml-[2vw] text-[15vw] leading-[105%] font-bold tracking-[-.4vw] uppercase;
     }
   }
 

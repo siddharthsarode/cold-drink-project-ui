@@ -16,7 +16,7 @@ const Message = () => {
       linesClass: "paragraph-line",
     });
 
-    console.log("para", paragraphSplitText);
+    // console.log("para", paragraphSplitText);
 
     gsap.to(firstMsgSplitText.words, {
       color: "#faeade",
